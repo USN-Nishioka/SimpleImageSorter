@@ -9,17 +9,11 @@ document.getElementById('start-test').addEventListener('click', async () => {
   const directoryPath = await ipcRenderer.invoke('select-directory');
   if (!directoryPath) return;
 
-  const aDir = path.join(directoryPath, 'A');
-  const bDir = path.join(directoryPath, 'B');
-
-  if (!fs.existsSync(aDir)) {
-    fs.mkdirSync(aDir);
-  }
-  if (!fs.existsSync(bDir)) {
-    fs.mkdirSync(bDir);
+  const ngDir = path.join(directoryPath, 'ng');
+  if (!fs.existsSync(ngDir)) {
+    fs.mkdirSync(ngDir);
   }
 
-  // imagePathList = fs.readdirSync(directoryPath).filter(file => file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg'));
   imagePathList = fs.readdirSync(directoryPath).filter(file => file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg')).map(file => path.join(directoryPath, file));
 
   currentImageIndex = 0;
@@ -33,11 +27,13 @@ document.getElementById('start-test').addEventListener('click', async () => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
     const directoryPath = path.dirname(imagePathList[currentImageIndex]);
-    const targetDir = event.key === 'ArrowRight' ? 'A' : 'B';
+    const targetDir = event.key === 'ArrowRight' ? 'ok' : 'ng';
     const src = imagePathList[currentImageIndex];
     const dest = path.join(directoryPath, targetDir, path.basename(imagePathList[currentImageIndex]));
 
-    ipcRenderer.invoke('move-file', { src, dest });
+    if (targetDir === 'ng') {
+      ipcRenderer.invoke('move-file', { src, dest });
+    }
 
     currentImageIndex++;
 

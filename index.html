@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>AB Test App</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>simple-ab-tester</title>
+  <link href="index.css" rel="stylesheet" />
+</head>
   <body>
+  <div id="app" class="dark-mode">
     <h1>画像のABテスト</h1>
-    <button id="start-test">テストを開始する</button>
-    <img id="image-display" src="" style="max-width: 100%; max-height: 80%;" />
-    <p id="image-counter"></p>
-    <script src="renderer.js"></script>
+    <div>
+      <img id="image-display" class="mx-auto my-4" />
+    </div>
+    <div class="text-center">
+      <button id="start-test">テストを開始する</button>
+    </div>
+    <div>
+      <p id="image-counter"></p>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
   </body>
 </html>
-
