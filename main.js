@@ -15,7 +15,7 @@ function createWindow() {
   win.loadFile('index.html');
 
   // 開発者ツールを開く
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);
