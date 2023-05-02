@@ -20,7 +20,7 @@ document.getElementById('start-test').addEventListener('click', async () => {
 
   if (imagePathList.length > 0) {
     displayImage(directoryPath, imagePathList[currentImageIndex]);
-    document.getElementById('image-counter').innerText = `画像 ${currentImageIndex + 1} / ${imagePathList.length}`;
+    document.getElementById('image-counter').innerText = `Images: ${currentImageIndex + 1} / ${imagePathList.length}`;
   }
 });
 
@@ -39,10 +39,10 @@ document.addEventListener('keydown', (event) => {
 
     if (currentImageIndex < imagePathList.length) {
       displayImage(directoryPath, imagePathList[currentImageIndex]);
-      document.getElementById('image-counter').innerText = `画像 ${currentImageIndex + 1} / ${imagePathList.length}`;
+      document.getElementById('image-counter').innerText = `Images: ${currentImageIndex + 1} / ${imagePathList.length}`;
     } else {
       document.getElementById('image-display').src = '';
-      document.getElementById('image-counter').innerText = 'ABテストが終了しました';
+      document.getElementById('image-counter').innerText = 'Done';
     }
   }
 });
